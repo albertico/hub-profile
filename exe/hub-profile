@@ -1,2 +1,10 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
+
+require "bundler/setup"
+require "hub/profile"
+
+# Register CLI commands.
+Hub::Profile::CLI.register "version", Hub::Profile::CLI::Version, aliases: ["v", "-v", "--version"]
+
+Dry::CLI.new(Hub::Profile::CLI).call
