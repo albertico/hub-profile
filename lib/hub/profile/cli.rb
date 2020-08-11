@@ -11,7 +11,7 @@ module Hub
     module CLI
       extend Dry::CLI::Registry
 
-      # List command
+      # List command.
       class List < Dry::CLI::Command
         desc "List profiles"
 
@@ -23,11 +23,13 @@ module Hub
         rescue TomlRB::ParseError, Dry::Struct::Error => e
           # TomlRB::ParseError
           # Dry::Struct::Error
-          puts "Error: Unable to parse credentials\n#{e.message}"
+          puts "Error: Unable to parse hub credentials\n#{e.message}"
+          exit 1
         rescue SystemCallError, IOError, TomlRB::ParseError => e
           # Errno::ENOENT - Not such file or directory.
           # Errno::EACCES - Permission denied.
           puts "Error: #{e.message}"
+          exit 1
         end
       end
 
