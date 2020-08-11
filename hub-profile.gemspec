@@ -34,6 +34,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "octokit", "~> 4.0"
   spec.add_dependency "toml-rb", "~> 2.0.1"
   spec.add_dependency "tty-command", "~> 0.9"
+  spec.add_dependency "tty-prompt", "~> 0.21"
   spec.add_dependency "tty-which", "~> 0.4"
   spec.add_dependency "warning", "~> 1.1"
 end
