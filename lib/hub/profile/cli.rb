@@ -4,6 +4,7 @@ require "hub/profile/version"
 require "hub/profile/util"
 require "dry/cli"
 require "tty/which"
+require "tty/command"
 
 module Hub
   module Profile
@@ -39,7 +40,8 @@ module Hub
 
         def call(*)
           if TTY::Which.exist?("hub")
-            Kernel.system "hub version"
+            cmd = TTY::Command.new(printer: :quiet)
+            cmd.run("hub version")
           else
             puts "Error: hub not found"
           end
