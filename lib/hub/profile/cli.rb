@@ -40,7 +40,7 @@ module Hub
 
         def call(*)
           if TTY::Which.exist?("hub")
-            cmd = TTY::Command.new(printer: :quiet)
+            cmd = TTY::Command.new(:printer => :quiet)
             cmd.run("hub version")
           else
             puts "Error: hub not found"
