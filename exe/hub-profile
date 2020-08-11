@@ -6,5 +6,6 @@ require "hub/profile"
 
 # Register CLI commands.
 Hub::Profile::CLI.register "version", Hub::Profile::CLI::Version, aliases: ["v", "-v", "--version"]
+Hub::Profile::CLI.register "list", Hub::Profile::CLI::List, aliases: ["l", "-l", "--list"]
 
 Dry::CLI.new(Hub::Profile::CLI).call
