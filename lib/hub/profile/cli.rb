@@ -3,7 +3,7 @@
 require "hub/profile/version"
 require "hub/profile/util"
 require "dry/cli"
-require "mkmf"
+require "tty/which"
 
 module Hub
   module Profile
@@ -38,7 +38,7 @@ module Hub
         desc "Print version"
 
         def call(*)
-          if MakeMakefile.find_executable0 "hub"
+          if TTY::Which.exist?("hub")
             Kernel.system "hub version"
           else
             puts "Error: hub not found"

@@ -33,4 +33,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency "dry-struct", "~> 1.0"
   spec.add_dependency "octokit", "~> 4.0"
   spec.add_dependency "toml-rb", "~> 2.0.1"
+  spec.add_dependency "tty-which", "~> 0.4"
 end
