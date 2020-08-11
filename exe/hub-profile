@@ -3,6 +3,12 @@
 
 require "bundler/setup"
 require "hub/profile"
+require "warning"
+
+# Ignore all warnings in gem dependencies.
+Gem.path.each do |path|
+  Warning.ignore(//, path)
+end
 
 # Register CLI commands.
 Hub::Profile::CLI.register "version", Hub::Profile::CLI::Version, aliases: ["v", "-v", "--version"]
