@@ -32,6 +32,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "dry-cli", "~> 0.6"
   spec.add_dependency "dry-struct", "~> 1.0"
   spec.add_dependency "octokit", "~> 4.0"
+  spec.add_dependency "safe_yaml", "~> 1.0"
   spec.add_dependency "toml-rb", "~> 2.0.1"
   spec.add_dependency "tty-command", "~> 0.10"
   spec.add_dependency "tty-file", "~> 0.10"
