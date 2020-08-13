@@ -1,17 +1,21 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-require "bundler/setup"
-require "hub/profile"
-require "warning"
+begin
+  require "bundler/setup"
+  require "hub/profile"
+  require "warning"
 
-# Ignore all warnings in gem dependencies.
-Gem.path.each do |path|
-  Warning.ignore(//, path)
+  # Ignore all warnings in gem dependencies.
+  Gem.path.each do |path|
+    Warning.ignore(//, path)
+  end
+
+  # Register CLI commands.
+  Hub::Profile::CLI.register "version", Hub::Profile::CLI::Version, aliases: ["v", "-v", "--version"]
+  Hub::Profile::CLI.register "list", Hub::Profile::CLI::List, aliases: ["l", "-l", "--list"]
+
+  Dry::CLI.new(Hub::Profile::CLI).call
+rescue SignalException
+  exit 1
 end
-
-# Register CLI commands.
-Hub::Profile::CLI.register "version", Hub::Profile::CLI::Version, aliases: ["v", "-v", "--version"]
-Hub::Profile::CLI.register "list", Hub::Profile::CLI::List, aliases: ["l", "-l", "--list"]
-
-Dry::CLI.new(Hub::Profile::CLI).call
